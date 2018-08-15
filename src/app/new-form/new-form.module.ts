@@ -23,4 +23,6 @@ const routes: Routes = [
   ],
   declarations: [NewFormPage]
 })
-export class NewFormPageModule {}
+export class NewFormPageModule {
+    
+}
