@@ -4,12 +4,12 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #488aff;
-  --ion-color-primary-rgb: 72,138,255;
-  --ion-color-primary-contrast: #fff;
+  --ion-color-primary: #008A26;
+  --ion-color-primary-rgb: 0,138,38;
+  --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255,255,255;
-  --ion-color-primary-shade: #3f79e0;
-  --ion-color-primary-tint: #5a96ff;
+  --ion-color-primary-shade: #007921;
+  --ion-color-primary-tint: #1a963c;
 
   /** secondary **/
   --ion-color-secondary: #32db64;
@@ -74,7 +74,8 @@
   --ion-color-dark-contrast-rgb: 255,255,255;
   --ion-color-dark-shade: #1e1e1e;
   --ion-color-dark-tint: #383838;
+}
 
-  /** Macmillan **/
-  --ion-color-primary: #008a26;
+.macmillan{
+  font-weight: bold;
 }
