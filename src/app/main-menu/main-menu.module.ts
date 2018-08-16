@@ -8,19 +8,19 @@ import { IonicModule } from '@ionic/angular';
 import { MainMenuPage } from './main-menu.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainMenuPage
-  }
+    {
+        path: '',
+        component: MainMenuPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [MainMenuPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [MainMenuPage]
 })
-export class MainMenuPageModule {}
+export class MainMenuPageModule { }

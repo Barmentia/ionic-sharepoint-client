@@ -1,97 +1,95 @@
-<ion-header item-height="250px">
-  <ion-toolbar color="primary">
-    <ion-icon name="arrow-back" routerLink="/main-menu"></ion-icon>
-    <ion-title>MISS Data Collection</ion-title>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-icon name="arrow-back" routerLink="/main-menu"></ion-icon>
+        <ion-title>MISS Data Collection</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h1 style="text-align: center">Data Collection form</h1>
-  
-  <!-- <form [formGroup]="new_item_form"></form> -->
+    <h1 style="text-align: center">Data Collection form</h1>
+    <ion-slides pager>
+        <ion-slide>
+            <form [formGroup]="customerForm" style="width: 80%" novalidate>
+                <h2 color="primary" style="text-align: left; margin-left: 12px;">1. Customer details</h2>
+                <ion-item>
+                    <ion-label color="primary" position="floating">First name</ion-label>
+                    <ion-input type="text" formControlName="firstName"></ion-input>
+                    <!-- <div class="alert alert-danger" [hidden]="customerForm.controls.firstName.untouched || customerForm.controls.firstName.valid">First Name is required</div> -->
+                </ion-item>
+                <!-- <ion-item>
+                    <ion-label color="primary" position="floating">Last name</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Address line 1</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Address line 2</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Address line 3</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Postocode</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Email</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">City</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Phone number</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item> -->
+            </form>
+        </ion-slide>
 
-  <ion-slides pager>
-    <ion-slide>
-      <form style="width: 80%">
-        <h2 color="primary" style="text-align: left; margin-left: 12px;">1. Customer details</h2>
-        <ion-item>
-          <ion-label color="primary" position="floating">First name</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Last name</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Address line 1</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Address line 2</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Address line 3</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Postocode</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Email</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">City</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Phone number</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-      </form>
-    </ion-slide>
-  
-    <ion-slide>
-      <form style="width: 80%">
-        <h2 color="primary" style="text-align: left; margin-left: 12px;">2. Further details</h2>
-        <!-- <ion-item>
-          <ion-label color="primary" position="floating">Date of birth</ion-label>
-          <ion-datetime type="date" name="dob" displayFormat="DD-MM-YYYY"></ion-datetime>
-        </ion-item> -->
-        <ion-item>
-          <ion-label color="primary" position="floating">Gender</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <!-- <ion-item>
-          <ion-label color="primary" position="floating">Ethnic group</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" position="floating">Customer type</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item> -->
-      </form>
-    </ion-slide>
-  
-    <ion-slide>
-      <form style="width: 80%">
-          <h2 color="primary" style="text-align: left; margin-left: 12px;">3. Staff details</h2>
-          <ion-item>
-            <ion-label color="primary" position="floating">Staff member name</ion-label>
-            <ion-input type="text" required></ion-input>
-          </ion-item>
-          <!-- <ion-item>
-            <ion-label color="primary" position="floating">Date</ion-label>
-            <ion-datetime type="date" displayFormat="DD-MM-YYYY"></ion-datetime>
-          </ion-item> -->
-          <ion-item>
-            <ion-label color="primary" position="floating">Bus name</ion-label>
-            <ion-input type="text" required></ion-input>
-          </ion-item>
-        </form>
-    </ion-slide>
-  </ion-slides>
-  <ion-button size="large" class="submit-btn macmillan" expand="block" type="submit" style="margin-top: 50px">Create</ion-button>
+        <ion-slide>
+            <form [formGroup]="customerForm" style="width: 80%">
+                <h2 color="primary" style="text-align: left; margin-left: 12px;">2. Further details</h2>
+                <!-- <ion-item>
+                <ion-label color="primary" position="floating">Date of birth</ion-label>
+                <ion-datetime type="date" name="dob" displayFormat="DD-MM-YYYY"></ion-datetime>
+                </ion-item> -->
+                <ion-item>
+                    <ion-label color="primary" position="floating">Gender</ion-label>
+                    <ion-input type="text" formControlName="gender"></ion-input>
+                </ion-item>
+                <!-- <ion-item>
+                <ion-label color="primary" position="floating">Ethnic group</ion-label>
+                <ion-input type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                <ion-label color="primary" position="floating">Customer type</ion-label>
+                <ion-input type="text" required></ion-input>
+                </ion-item> -->
+            </form>
+        </ion-slide>
+
+        <ion-slide>
+            <form [formGroup]="customerForm" style="width: 80%; margin-bottom: 130px">
+                <h2 color="primary" style="text-align: left; margin-left: 12px;">3. Staff details</h2>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Staff member name</ion-label>
+                    <ion-input type="text" formControlName="staffMemberName"></ion-input>
+                </ion-item>
+                <!-- <ion-item>
+                <ion-label color="primary" position="floating">Date</ion-label>
+                <ion-datetime type="date" displayFormat="DD-MM-YYYY"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" position="floating">Bus name</ion-label>
+                    <ion-input type="text" required></ion-input>
+                </ion-item> -->
+            </form>
+        </ion-slide>
+    </ion-slides> 
+    <ion-button size="large" (click)="submit(customerForm.value)" class="submit-btn macmillan" expand="block" type="submit" style="margin-top: 50px" [disabled]="!customerForm.valid">Create</ion-button>
 </ion-content>

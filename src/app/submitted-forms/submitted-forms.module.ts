@@ -8,19 +8,19 @@ import { IonicModule } from '@ionic/angular';
 import { SubmittedFormsPage } from './submitted-forms.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: SubmittedFormsPage
-  }
+    {
+        path: '',
+        component: SubmittedFormsPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [SubmittedFormsPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [SubmittedFormsPage]
 })
-export class SubmittedFormsPageModule {}
+export class SubmittedFormsPageModule { }
