@@ -14,9 +14,22 @@ export class NewFormPage implements OnInit {
 
     customerForm: FormGroup;
     customer: ICustomer = {
+        title: '',
         firstName: '',
+        lastName: '',
+        addressLine1: '',
+        addressLine2: '',
+        addressLine3: '',
+        postcode: '',
+        email: '',
+        city: '',
+        phoneNumber: '',
+        // dateOfBirth: '',
         gender: '',
-        staffMemberName: ''
+        ethnicGroup: '',
+        customerType: '',
+        staffMemberName: '',
+        busName: ''
     };
 
     errorMessage: string;
@@ -37,11 +50,23 @@ export class NewFormPage implements OnInit {
     }
 
     buildForm() {
-         this.customerForm = this.formBuilder.group({
-          firstName:  [this.customer.firstName, Validators.required],
-          gender:     [this.customer.gender, Validators.required],
-          //email:      [this.customer.email, [Validators.required, ValidationService.emailValidator]],
-          staffMemberName:    [this.customer.staffMemberName, Validators.required],
+        this.customerForm = this.formBuilder.group({
+            title:[this.customer.title, Validators.required],
+            firstName:[this.customer.firstName, Validators.required],
+            lastName:[this.customer.lastName, Validators.required],
+            addressLine1:[this.customer.addressLine1, Validators.required],
+            addressLine2:[this.customer.addressLine2, Validators.required],
+            addressLine3:[this.customer.addressLine3, Validators.required],
+            postcode:[this.customer.postcode, Validators.required],
+            email:[this.customer.email, Validators.required],
+            city:[this.customer.city, Validators.required],
+            phoneNumber:[this.customer.phoneNumber, Validators.required],
+            // dateOfBirth:[this.customer.dateOfBirth, Validators.required],
+            gender:[this.customer.gender, Validators.required],
+            ethnicGroup:[this.customer.ethnicGroup, Validators.required],
+            customerType:[this.customer.customerType, Validators.required],
+            staffMemberName:[this.customer.staffMemberName, Validators.required],
+            busName:[this.customer.busName, Validators.required]
         });
     }
 
@@ -50,6 +75,7 @@ export class NewFormPage implements OnInit {
         this.dataService.insertCustomer(value)
             .subscribe((customer: ICustomer) => {
                 if (customer) {
+                    this.customerForm.reset();
                     this.router.navigate(['/submitted-forms']);
                 }
                 else {
@@ -58,7 +84,5 @@ export class NewFormPage implements OnInit {
             },
             (err) => console.log(err));
         console.log(value);
-        //alert("submited");
-        //console.log(value);
     }
 }
