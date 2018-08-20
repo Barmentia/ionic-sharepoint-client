@@ -13,25 +13,56 @@
                 <h2 color="primary" style="text-align: left; margin-left: 12px;">1. Customer details</h2>
                 <ion-item>
                     <ion-label color="primary" position="floating">Title</ion-label>
-                    <ion-input type="text" formControlName="title"></ion-input>
+                    <ion-select [interfaceOptions]="titleSheetOptions" interface="action-sheet" placeholder="-- Select --">
+                        <ion-select-option *ngFor="let title of titles" [value]="title">
+                            {{ title }}
+                        </ion-select-option>
+                    </ion-select>
                 </ion-item>
                 <ion-item>
                     <ion-label color="primary" position="floating">First name</ion-label>
                     <ion-input type="text" formControlName="firstName"></ion-input>
-                    <!-- <div class="alert alert-danger" [hidden]="customerForm.controls.firstName.untouched || customerForm.controls.firstName.valid">First Name is required</div> -->
                 </ion-item>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.firstName" >
+                        <div class="error-message" *ngIf="customerForm.get('firstName').hasError(validation.type) && (customerForm.get('firstName').dirty || customerForm.get('firstName').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
                 <ion-item>
                     <ion-label color="primary" position="floating">Last name</ion-label>
                     <ion-input type="text" formControlName="lastName"></ion-input>
                 </ion-item>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.lastName" >
+                        <div class="error-message" *ngIf="customerForm.get('lastName').hasError(validation.type) && (customerForm.get('lastName').dirty || customerForm.get('lastName').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
                 <ion-item>
                     <ion-label color="primary" position="floating">Address line 1</ion-label>
                     <ion-input type="text" formControlName="addressLine1"></ion-input>
                 </ion-item>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.addressLine1" >
+                        <div class="error-message" *ngIf="customerForm.get('addressLine1').hasError(validation.type) && (customerForm.get('addressLine1').dirty || customerForm.get('addressLine1').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
                 <ion-item>
                     <ion-label color="primary" position="floating">Address line 2</ion-label>
                     <ion-input type="text" formControlName="addressLine2"></ion-input>
                 </ion-item>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.addressLine2" >
+                        <div class="error-message" *ngIf="customerForm.get('addressLine2').hasError(validation.type) && (customerForm.get('addressLine2').dirty || customerForm.get('addressLine2').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
                 <ion-item>
                     <ion-label color="primary" position="floating">Address line 3</ion-label>
                     <ion-input type="text" formControlName="addressLine3"></ion-input>
@@ -40,10 +71,24 @@
                     <ion-label color="primary" position="floating">Postocode</ion-label>
                     <ion-input type="text" formControlName="postcode"></ion-input>
                 </ion-item>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.postcode" >
+                        <div class="error-message" *ngIf="customerForm.get('postcode').hasError(validation.type) && (customerForm.get('postcode').dirty || customerForm.get('postcode').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
                 <ion-item>
                     <ion-label color="primary" position="floating">Email</ion-label>
                     <ion-input type="text" formControlName="email"></ion-input>
                 </ion-item>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.email" >
+                        <div class="error-message" *ngIf="customerForm.get('email').hasError(validation.type) && (customerForm.get('email').dirty || customerForm.get('email').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
                 <ion-item>
                     <ion-label color="primary" position="floating">City</ion-label>
                     <ion-input type="text" formControlName="city"></ion-input>
@@ -58,21 +103,30 @@
         <ion-slide>
             <form [formGroup]="customerForm" style="width: 80%">
                 <h2 color="primary" style="text-align: left; margin-left: 12px;">2. Further details</h2>
-                <!-- <ion-item>
-                    <ion-label color="primary" position="floating">Date of birth</ion-label>
-                    <ion-datetime type="date" formControlName="dateOfBirth" displayFormat="DD-MM-YYYY"></ion-datetime>
-                </ion-item> -->
                 <ion-item>
                     <ion-label color="primary" position="floating">Gender</ion-label>
-                    <ion-input type="text" formControlName="gender"></ion-input>
+                    <ion-select formControlName="gender" [interfaceOptions]="genderSheetOptions" interface="action-sheet" placeholder="-- Select --">
+                        <ion-select-option *ngFor="let gender of genders" [value]="gender">
+                            {{ gender }}
+                        </ion-select-option>
+                    </ion-select>    
                 </ion-item>
                 <ion-item>
                     <ion-label color="primary" position="floating">Ethnic group</ion-label>
-                    <ion-input type="text" formControlName="ethnicGroup"></ion-input>
+                    <!-- <ion-input type="text" formControlName="ethnicGroup"></ion-input> -->
+                    <ion-select formControlName="ethnicGroup" [interfaceOptions]="ethnicGroupsSheetOptions" interface="action-sheet" placeholder="-- Select --">
+                        <ion-select-option *ngFor="let ethnicGroup of ethnicGroups" [value]="ethnicGroup">
+                            {{ ethnicGroup }}
+                        </ion-select-option>
+                    </ion-select>
                 </ion-item>
                 <ion-item>
                     <ion-label color="primary" position="floating">Customer type</ion-label>
-                    <ion-input type="text" formControlName="customerType"></ion-input>
+                    <ion-select multiple formControlName="customerType" [interfaceOptions]="customerTypesSheetOptions" interface="action-sheet" placeholder="-- Select --">
+                        <ion-select-option *ngFor="let customerType of customerTypes" [value]="customerType">
+                            {{ customerType }}
+                        </ion-select-option>
+                    </ion-select>
                 </ion-item>
             </form>
         </ion-slide>
@@ -86,7 +140,11 @@
                 </ion-item>
                 <ion-item>
                     <ion-label color="primary" position="floating">Bus name</ion-label>
-                    <ion-input type="text" formControlName="busName"></ion-input>
+                    <ion-select formControlName="busName" [interfaceOptions]="busSheetOptions" interface="action-sheet" placeholder="-- Select --">
+                        <ion-select-option *ngFor="let bus of buses" [value]="bus">
+                            {{ bus }}
+                        </ion-select-option>
+                    </ion-select>    
                 </ion-item>
             </form>
         </ion-slide>

@@ -1,5 +1,3 @@
-import { ModuleWithProviders } from '@angular/core';
-
 export interface ICustomer {
     title: string;
     firstName: string;

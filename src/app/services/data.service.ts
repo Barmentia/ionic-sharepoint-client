@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 
 import { ICustomer, ICustomerResponse } from '../shared/interfaces';
 import { environment } from '../../environments/environment';
+import { StateKey } from '@angular/platform-browser';
 
 @Injectable({
     providedIn: 'root'
@@ -13,8 +14,34 @@ export class DataService {
 
     baseUrl = environment.apiUrl;
 
+    titles: Array<any> = ["Mr","Mrs","Ms","Miss","Dr","Professor","The Reverend","Sir","Dame","Lord","Lady"];
+    genders: Array<any> = ["Male","Female","I identify in another way","Prefer not to say"];
+    ethnicGroups: Array<any> = ["White","Asian/Asian British","Black/Black British","Mixed","Other ethnic group","Not asked","Prefer not to say"];
+    customerTypes: Array<any> = ["PLWC","Relative","Carer","Friend","HCP/SCP","Employer","Person worried about cancer","Other","Prefer not to say"];
+    buses: Array<any> = ["Basil","Bronwen","Bertie","Beryl","Dougie","Betty"];
+
     constructor(private http: HttpClient) {
 
+    }
+
+    getTitles() {
+        return this.titles;
+    }
+
+    getGenders() {
+        return this.genders;
+    }
+
+    getEthnicGroups() {
+        return this.ethnicGroups;
+    }
+
+    getCustomerTypes() {
+        return this.customerTypes;
+    }
+
+    getBuses() {
+        return this.buses;
     }
 
     insertCustomer(customer: ICustomer) : Observable<ICustomer> {
@@ -29,7 +56,7 @@ export class DataService {
                 catchError(this.handleError)
             );
     }
-
+    
     private handleError(error: HttpErrorResponse) {
         console.log("there's been an error");
         console.error('server error:', error); 
