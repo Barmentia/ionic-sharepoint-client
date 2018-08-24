@@ -1,9 +1,12 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-icon name="arrow-back" routerLink="/main-menu"></ion-icon>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="main-menu"></ion-back-button>
+        </ion-buttons>
         <ion-title>MISS Data Collection</ion-title>
     </ion-toolbar>
 </ion-header>
+
 <ion-content padding>
     <ion-grid>
         <ion-row>
@@ -24,4 +27,33 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+
+    <form>
+        <h2 color="primary" style="text-align: left; margin-left: 12px;">3. Staff details</h2>
+        <ion-grid>
+            <ion-row style="border:1px solid black">
+                <ion-col size="4" style="border:1px solid red" >
+                    <ion-item>
+                        <ion-label color="primary" position="floating">Staff member name</ion-label>
+                        <ion-input type="text"></ion-input>
+                    </ion-item>
+                
+                </ion-col>
+                <ion-col size="8" >
+                        <ion-item>
+                            <ion-select [interfaceOptions]="" interface="action-sheet" placeholder="-- Select --">
+                                <ion-select-option *ngFor="" >
+                                    
+                                </ion-select-option>
+                            </ion-select>
+                            </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+
+
+
+       
+
 </ion-content>

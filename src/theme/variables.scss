@@ -77,18 +77,77 @@
 }
 
 .macmillan{
-  font-weight: bold;
-  text-transform: none;
+    font-weight: bold;
+    text-transform: none;
+}
+
+ion-input{
+    margin-left:16px;
+}
+
+ion-label {
+    text-align: right;
 }
 
 .error-message{
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  margin-left: 15px;
-  text-align: left;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-left: 15px;
+    text-align: left;
+}
+
+h2 {
+    text-align: left; margin-left: 12px;
+}
+
+form {
+    width: 90%;
+}
+
+.center{
+    text-align: center;
+}
+
+.bottom {
+    margin-bottom:50px;
+}
+
+.top {
+    margin-top:50px;
+}
+
+
+.alert-wrapper{
+    height: 60% !important;
+    width: 50% !important;
+}
+
+.alert-wrapper.sc-ion-alert-ios{
+    max-height: 60% !important; 
+    max-width: 50% !important;
+    height: 525px !important;
+}
+
+.alert-title.sc-ion-alert-ios, .alert-sub-title.sc-ion-alert-ios {
+    text-align: center;
+}
+
+.alert-checkbox-group.sc-ion-alert-ios, .alert-radio-group.sc-ion-alert-ios {
+  // height: 80% !important;
+    max-height: 340px !important;
+}
+
+.alert-checkbox-label.sc-ion-alert-ios {
+    color: var(--ion-color-primary,#3880ff);
+    font-size: 20px;
+}
+
+.alert-checkbox-group.sc-ion-alert-ios, .alert-radio-group.sc-ion-alert-ios {
+    max-height: 400px !important;
+    height: 400px !important;
 }

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { ICustomer } from '../shared/interfaces';
 import { DataService } from '../services/data.service';
-import { ValidationService } from '../shared/validation.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
     selector: 'app-new-form',
@@ -24,16 +24,21 @@ export class NewFormPage implements OnInit {
         email: '',
         city: '',
         phoneNumber: '',
-        // dateOfBirth: '',
+        dateOfBirthComponent: {
+            day:'',
+            month:'',
+            year:''
+        },
+        dateOfBirth: '',
         gender: '',
         ethnicGroup: '',
-        customerType: '',
+        customerType: [],
         staffMemberName: '',
         busName: ''
     };
 
     errorMessage: string;
-    
+
     titles: Array<any>;
     genders: Array<any>;
     ethnicGroups: Array<any>;
@@ -41,6 +46,9 @@ export class NewFormPage implements OnInit {
     buses: Array<any>;
 
     validation_messages={
+        'title':[
+            { type:'required', message:'Title is required.'}
+        ],        
         'firstName':[
             { type:'required', message:'First name is required.'},
             { type:'minlength', message:'Minimum 2 characters are required for first name.'},
@@ -61,13 +69,15 @@ export class NewFormPage implements OnInit {
             { type:'required', message:'Postcode is required.'}
         ],
         'email':[
-            { type:'required', message:'Email is required.'}
+            { type:'required', message:'Email is required.'},
+            { type:'pattern', message:'The email is not valid.'}
         ],
         'city':[
             { type:'required', message:'City is required.'}
         ],
         'phoneNumber':[
-            { type:'required', message:'Phone number is required.'}
+            { type:'required', message:'Phone number is required.'},
+            { type:'pattern', message:'Just numbers are allowed.'}
         ],
         'gender':[
             { type:'required', message:'Gender is required.'}
@@ -81,7 +91,7 @@ export class NewFormPage implements OnInit {
         'staffMemberName':[
             { type:'required', message:'Staff member name is required.'}
         ],
-        'busname':[
+        'busName':[
             { type:'required', message:'Bus name is required.'}
         ]
     }
@@ -103,7 +113,8 @@ export class NewFormPage implements OnInit {
 
     customerTypesSheetOptions: any = {
         header: 'Customer type',
-        subHeader: 'Select your customer types'
+        subHeader: 'Select your customer types',
+        witdth: '500px'
     };
 
     busSheetOptions: any = {
@@ -114,10 +125,11 @@ export class NewFormPage implements OnInit {
     constructor(private router: Router,
         private route: ActivatedRoute, 
         private dataService: DataService,
-        private formBuilder: FormBuilder) { }
-
+        private formBuilder: FormBuilder,
+        public alertController: AlertController) { }
+        
     ngOnInit() {
-        console.log("entra");
+        //console.log("customerForm = " + this.customerForm.errors);
         this.buildForm();
 
         this.getTitles();
@@ -134,13 +146,18 @@ export class NewFormPage implements OnInit {
             lastName:[this.customer.lastName, Validators.compose([Validators.minLength(2), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
             addressLine1:[this.customer.addressLine1, Validators.required],
             addressLine2:[this.customer.addressLine2, Validators.required],
-            addressLine3:[this.customer.addressLine3, Validators.required],
+            addressLine3:[this.customer.addressLine3],
             postcode:[this.customer.postcode, Validators.required],
-            email:[this.customer.email, [Validators.required, ValidationService.emailValidator]],
+            email:[this.customer.email, Validators.compose([
+                    Validators.required, 
+                    Validators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
+                ])
+            ],
             city:[this.customer.city, Validators.required],
             phoneNumber:[this.customer.phoneNumber, Validators.required],
-            // dateOfBirth:[this.customer.dateOfBirth, Validators.required],
             gender:[this.customer.gender, Validators.required],
+            dateOfBirthComponent:[this.customer.dateOfBirthComponent],
+            dateOfBirth:[this.customer.dateOfBirth],
             ethnicGroup:[this.customer.ethnicGroup, Validators.required],
             customerType:[this.customer.customerType, Validators.required],
             staffMemberName:[this.customer.staffMemberName, Validators.required],
@@ -168,9 +185,10 @@ export class NewFormPage implements OnInit {
         this.buses = this.dataService.getBuses();
     }
 
-    submit(value : ICustomer) {
-      
-        this.dataService.insertCustomer(value)
+    submit(form : ICustomer) {
+        form.dateOfBirth = form.dateOfBirthComponent.day.text + form.dateOfBirthComponent.month.text + form.dateOfBirthComponent.year.text;
+
+        this.dataService.insertCustomer(form)
             .subscribe((customer: ICustomer) => {
                 if (customer) {
                     this.customerForm.reset();
@@ -181,6 +199,6 @@ export class NewFormPage implements OnInit {
                 }
             },
             (err) => console.log(err));
-        console.log(value);
+        console.log(form);
     }
 }

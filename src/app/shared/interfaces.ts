@@ -9,12 +9,19 @@ export interface ICustomer {
     email: string;
     city: string;
     phoneNumber: string;
-    //dateOfBirth: string;
+    dateOfBirthComponent: DateOfBirth;
+    dateOfBirth: string;
     gender: string;
     ethnicGroup: string;
-    customerType: string;
+    customerType: Array<string>;
     staffMemberName: string;
     busName: string;
+}
+
+export class DateOfBirth {
+    day: any;
+    month: any;
+    year: any;
 }
 
 export interface ICustomerResponse {
