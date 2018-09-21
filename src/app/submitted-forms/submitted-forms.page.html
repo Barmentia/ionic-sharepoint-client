@@ -6,53 +6,92 @@
         <ion-title>MISS Data Collection</ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content padding>
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <div>
-                    1 of 3
-                </div>
+    <ion-grid no-padding class="submitted-grid">
+        <ion-row class="header">
+            <ion-col size="4">
+                <ion-item>
+                    <ion-label>Created</ion-label>
+                </ion-item>
             </ion-col>
-            <ion-col>
-                <ion-button routerLink="/new-form" block>
-                    Start a new form
-                </ion-button>
+            <ion-col size="4">
+                <ion-item>
+                    <ion-label>Staff name</ion-label>
+                </ion-item>
             </ion-col>
-            <ion-col>
-                <div>
-                    3 of 3
-                </div>
+            <ion-col size="2">
+                <ion-item>
+                    <ion-label>Bus</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <ion-item>
+                    <ion-label>Postcode</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let customer of customers;">
+            <ion-col size="4">
+                <ion-item>
+                    <ion-label>{{ customer.created }}</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+                <ion-item>
+                    <ion-label>{{ customer.staffMemberName }}</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <ion-item>
+                    <ion-label>{{ customer.busName }}</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <ion-item>
+                    <ion-label>{{ customer.serviceLocationPostCode }}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+            
+        <ion-row *ngIf="!customers.length">
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label>No Records Found!</ion-label>
+                </ion-item>
             </ion-col>
         </ion-row>
     </ion-grid>
 
-    <form>
-        <h2 color="primary" style="text-align: left; margin-left: 12px;">3. Staff details</h2>
-        <ion-grid>
-            <ion-row style="border:1px solid black">
-                <ion-col size="4" style="border:1px solid red" >
-                    <ion-item>
-                        <ion-label color="primary" position="floating">Staff member name</ion-label>
-                        <ion-input type="text"></ion-input>
-                    </ion-item>
-                
-                </ion-col>
-                <ion-col size="8" >
-                        <ion-item>
-                            <ion-select [interfaceOptions]="" interface="action-sheet" placeholder="-- Select --">
-                                <ion-select-option *ngFor="" >
-                                    
-                                </ion-select-option>
-                            </ion-select>
-                            </ion-item>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </form>
-
-
+<!-- 
+    <div class="row grid-container">
+        <div class="col-md-10">
+            <div class="table">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Created</th>
+                            <th>Staff member name</th>
+                            <th>Bus name</th>
+                            <th>Postcode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customers;">
+                            <td>{{ customer.created }}</td>
+                            <td>{{ customer.staffMemberName }}</td>
+                            <td>{{ customer.busName }}</td>
+                            <td>{{ customer.serviceLocationPostCode }}</td>
+                        </tr>
+                        <tr *ngIf="!customers.length">
+                            <td colspan="6">No Records Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+ -->
 
        
 

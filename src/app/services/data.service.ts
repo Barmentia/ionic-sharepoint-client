@@ -44,6 +44,17 @@ export class DataService {
         return this.buses;
     }
 
+    getCustomers() : Observable<ICustomerResponse[]> {
+        return this.http.get<ICustomerResponse[]>(this.baseUrl)
+            .pipe(
+                   map(customers => {
+                    console.log('get customers');
+                       return customers;
+                   }),
+                   catchError(this.handleError)
+                );
+    }
+
     insertCustomer(customer: ICustomer) : Observable<ICustomer> {
         console.log("insert url = " + this.baseUrl);
         console.log("insert customer = " + customer);

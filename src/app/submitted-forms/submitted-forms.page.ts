@@ -1,4 +1,6 @@
+import { ICustomerResponse } from './../shared/interfaces';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-submitted-forms',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmittedFormsPage implements OnInit {
 
-    constructor() { }
+    customers: ICustomerResponse[] = [];
+
+    constructor(private dataService: DataService) { }
 
     ngOnInit() {
+        this.getCustomers();
     }
 
+    getCustomers() {
+    this.dataService.getCustomers()
+        .subscribe((response: ICustomerResponse[]) => {
+            this.customers = response;
+        },
+        (err: any) => console.log(err));
+    }
 }

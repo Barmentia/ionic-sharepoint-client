@@ -18,6 +18,13 @@ export interface ICustomer {
     busName: string;
 }
 
+export interface ICustomerResponse {
+    staffMemberName: string;
+    serviceLocationPostCode: string
+    busName: string;
+    created: string;
+}
+
 export class DateOfBirth {
     day: any;
     month: any;

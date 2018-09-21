@@ -129,7 +129,6 @@ export class NewFormPage implements OnInit {
         public alertController: AlertController) { }
         
     ngOnInit() {
-        //console.log("customerForm = " + this.customerForm.errors);
         this.buildForm();
 
         this.getTitles();
