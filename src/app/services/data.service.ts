@@ -5,7 +5,6 @@ import { map, catchError } from 'rxjs/operators';
 
 import { ICustomer, ICustomerResponse } from '../shared/interfaces';
 import { environment } from '../../environments/environment';
-import { StateKey } from '@angular/platform-browser';
 
 @Injectable({
     providedIn: 'root'
